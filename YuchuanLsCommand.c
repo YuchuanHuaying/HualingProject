@@ -58,7 +58,10 @@ int main(int argc,char *argv[]){
     //struct group *group_file=getgrgid(&sb.st_gid);
     //分析时间
     struct tm *file_tm=localtime(&sb.st_atim.tv_sec);
-    printf("------\n");
+    //-rw-rw-r--. 1 dyctester dyctester   436 Jun 23 21:01 YuchuanOpenMaxFile.c
+    char timebuf[20]={0};
+    sprintf(timebuf,"%d月 %d %02d:%02d",file_tm->tm_mon+1,file_tm->tm_mday,file_tm->tm_hour,file_tm->tm_min);
+    printf("%s. %ld %s %s %ld %s %s\n",stmode,sb.st_nlink,getpwuid(sb.st_uid)->pw_name,getgrgid(sb.st_gid)->gr_name,sb.st_size,timebuf,argv[1]);
     return 0;
 }
 
