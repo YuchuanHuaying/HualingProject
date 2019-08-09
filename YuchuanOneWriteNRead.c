@@ -53,7 +53,7 @@ int main(int argc,char *argv[]){
 		char buf[256] = {0};
 		while(1){
 			memset(buf,0,sizeof(buf));
-			int ret = read(fd[0],buf,size(buf));
+			int ret = read(fd[0],buf,sizeof(buf));
 			if(ret == 0){
 				printf("Read Over!\n");
 				break;
